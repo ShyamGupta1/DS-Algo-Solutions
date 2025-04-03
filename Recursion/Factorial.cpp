@@ -1,20 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-int fact = 1;
-void printFib(int n)
+ 
+long long printFib(int n)
 {
     if (n == 0)
-        return;
-    fact *= n;
-    printFib(n - 1);
+        return 1;
+    return n * printFib(n - 1);
 }
-
+ 
 int main()
 {
     int n;
     cin >> n;
-    printFib(n);
-    cout << fact;
+    cout << printFib(n);
     return 0;
 }
