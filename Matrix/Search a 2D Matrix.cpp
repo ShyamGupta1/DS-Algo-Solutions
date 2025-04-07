@@ -21,3 +21,29 @@ public:
         return false;
     }
 };
+
+// T.C : O(log(m*n))
+// S.C : o(1)
+
+class Solution
+{
+public:
+    bool searchMatrix(vector<vector<int>> &matrix, int target)
+    {
+        // Using Binary Search
+        int m = matrix.size(), n = matrix[0].size();
+        int low = 0, high = m * n - 1;
+        while (low <= high)
+        {
+            int mid = low + (high - low) / 2;
+            int i = mid / n, j = mid % n;
+            if (matrix[i][j] == target)
+                return true;
+            else if (matrix[i][j] < target)
+                low = mid + 1;
+            else
+                high = mid - 1;
+        }
+        return false;
+    }
+};
